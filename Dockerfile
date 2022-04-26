@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS base-unsquashed
+FROM debian:bullseye-slim AS base-unsquashed
 
 ENV \
 	DEBIAN_FRONTEND='noninteractive' \
