@@ -35,15 +35,15 @@ RUN \
 	dpkg-reconfigure --frontend noninteractive tzdata locales
 
 RUN \
-	groupadd -r chrome && \
-	useradd -u 1000 -g chrome -G audio,video chrome && \
-	mkdir -p /home/chrome/Downloads && \
+	groupadd -r user && \
+	useradd -u 1000 -g user -G audio,video user && \
+	mkdir -p /home/user/Downloads && \
 	mkdir -p /data && \
-	chown -R chrome:chrome /home/chrome /data
+	chown -R user:user /home/user /data
 
-USER chrome
+USER user
 
-WORKDIR /home/chrome
+WORKDIR /home/user
 
 COPY init /
 
