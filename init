@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# The "single process running in this container.  Runs the VNC server in the background, as well as chrome.  Chrome's
+# remote debugging only listens on localhost, so we use socat to divert from 9222 to 9999.  Outside the container, we
+# can specify a different port.
+
 _atexit() {
     kill -TERM $socatpid
     kill -TERM $chromepid
@@ -14,7 +18,10 @@ socatpid=$!
 /usr/bin/Xtigervnc :0 \
 		   -SecurityTypes None \
 		   -geometry ${GEOMETRY} \
-		   -AcceptSetDesktopSize=0 \
+		   -AcceptSetDesktopSize=1 \
+		   -AlwaysShared \
+		   -FrameRate 30 \
+		   -RawKeyboard \
 		   -nolisten unix &
 vncpid=$!
 
