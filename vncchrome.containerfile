@@ -44,9 +44,9 @@ USER user
 
 WORKDIR /home/user
 
-COPY init /
+COPY container_entrypoint.sh /
 
 EXPOSE 5900
 EXPOSE 9222
 
-CMD ["/init"]
+CMD ["/container_entrypoint.sh"]

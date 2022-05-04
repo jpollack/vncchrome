@@ -31,7 +31,7 @@ gheight=$(echo ${GEOMETRY} | cut -d 'x' -f 2)
 export DISPLAY=:0
 
 /usr/bin/google-chrome \
-    --start-fullscreen \
+    $FULLSCREEN \
     --disable-default-apps \
     --disable-dev-shm-usage \
     --disable-gpu \
